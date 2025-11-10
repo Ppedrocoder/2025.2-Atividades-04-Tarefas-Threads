@@ -17,7 +17,7 @@
 #include <math.h>
 #include <string.h>
 
-#define NUM_ITERACOES 1000000
+#define NUM_ITERACOES 6000000
 #define NUM_LINHAS_IO 10000
 #define NUM_ITERACOES_MISTA 100
 #define TAMANHO_BUFFER 1024
@@ -62,7 +62,6 @@ void* funcao_cpu(void* arg) {
     
     pthread_exit(NULL);
 }
-
 /*
  * Thread 2: Operações apenas de I/O
  * Realiza leitura e escrita de arquivos
@@ -180,8 +179,8 @@ void* funcao_mista(void* arg) {
 }
 
 int main(int argc, char* argv[]) {
-    pthread_t threads[3];
-    ThreadData thread_data[3];
+    pthread_t threads[5];
+    ThreadData thread_data[5];
     int rc;
     
     printf("=================================================\n");
@@ -199,9 +198,17 @@ int main(int argc, char* argv[]) {
     thread_data[0].thread_id = 1;
     strcpy(thread_data[0].nome, "CPU");
     
+    // Prepara dados da Thread 4 (CPU)
+    thread_data[3].thread_id = 4;
+    strcpy(thread_data[4].nome, "CPU");
+
     // Prepara dados da Thread 2 (I/O)
     thread_data[1].thread_id = 2;
     strcpy(thread_data[1].nome, "I/O");
+
+    // Prepara dados da Thread 5 (I/O)
+    thread_data[4].thread_id = 5;
+    strcpy(thread_data[5].nome, "I/O");
     
     // Prepara dados da Thread 3 (Mista)
     thread_data[2].thread_id = 3;
@@ -215,11 +222,23 @@ int main(int argc, char* argv[]) {
         fprintf(stderr, "Erro ao criar thread 1: %d\n", rc);
         exit(EXIT_FAILURE);
     }
+    // Cria a Thread 4 (CPU)
+    rc = pthread_create(&threads[4], NULL, funcao_cpu, (void*)&thread_data[4]);
+    if (rc) {
+        fprintf(stderr, "Erro ao criar thread 4: %d\n", rc);
+        exit(EXIT_FAILURE);
+    }
     
     // Cria a Thread 2 (I/O)
     rc = pthread_create(&threads[1], NULL, funcao_io, (void*)&thread_data[1]);
     if (rc) {
         fprintf(stderr, "Erro ao criar thread 2: %d\n", rc);
+        exit(EXIT_FAILURE);
+    }
+    // Cria a Thread 5 (I/O)
+    rc = pthread_create(&threads[5], NULL, funcao_io, (void*)&thread_data[5]);
+    if (rc) {
+        fprintf(stderr, "Erro ao criar thread 5: %d\n", rc);
         exit(EXIT_FAILURE);
     }
     
