@@ -12,7 +12,7 @@
 
 **Sistema Operacional:** Codespace  
 **Processador:** _[Ex: Intel Core i5, AMD Ryzen, etc.]_  
-**Número de Cores:** _[Ex: 4 cores, 8 threads]_
+**Número de Cores:** 2 Cores
 
 ---
 
@@ -40,8 +40,8 @@
 ### Observações sobre a Saída
 
 Descreva como as mensagens das threads apareceram no console:
+Os threads aparecem intercalando em execução de suas operações.
 
-_[Ex: As mensagens das três threads apareceram intercaladas, mostrando que estavam executando simultaneamente...]_
 
 ---
 
@@ -110,10 +110,10 @@ O sistema teria que esperar concluir a execução de uma operação para ir para
 **Alteração realizada:** Criei uma thread CPU e uma I/O
 
 **Resultado observado:**
-- Comportamento: _______
-- Impacto na performance: _______
+- Comportamento: Demorou mais a execução.
+- Impacto na performance: O tempo almentou para 6 segundos.
 
-**Conclusão:** _[O que você aprendeu com essa modificação?]_
+**Conclusão:** Muitos threads podem fazer a execução ficar lenta se tiver poucos núcleos.
 
 ---
 
@@ -121,10 +121,10 @@ O sistema teria que esperar concluir a execução de uma operação para ir para
 
 Liste os principais conceitos de sistemas operacionais que você compreendeu melhor com esta atividade:
 
-1. _[Ex: Concorrência e paralelismo]_
-2. _[Ex: Diferença entre operações CPU-bound e I/O-bound]_
-3. _[Ex: Uso da biblioteca pthread]_
-4. _[...]_
+1. Como funciona o escalonamento no uso dos threads.
+2. Como o uso de um tipo de operação pode impactar no uso de GPU do sistema.
+3. Como a quantidade de núcleos impacta na quantidade de threads.
+4. Como criar threads usando C.
 
 ---
 
@@ -132,15 +132,15 @@ Liste os principais conceitos de sistemas operacionais que você compreendeu mel
 
 Descreva quaisquer problemas que enfrentou durante a atividade e como os resolveu:
 
-_[Sua resposta aqui]_
+Entender alguns conceitos, como o paralelismo de threads e como mexer no código em C.
 
 ---
 
 ## Comentários Finais
 
-_[Espaço para observações adicionais, sugestões ou comentários sobre a atividade]_
+Atividade proveitosa para o aprendizado de sistemas operacionais e o que está por trás de seu funcionamento.
 
 ---
 
-**Data de Conclusão:** _[Data]_  
-**Assinatura:** _[Seu nome]_
+**Data de Conclusão:** 10/11/2025  
+**Assinatura:** Pedro Ricardo dos Santos Gomes
