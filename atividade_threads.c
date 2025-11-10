@@ -223,7 +223,7 @@ int main(int argc, char* argv[]) {
         exit(EXIT_FAILURE);
     }
     // Cria a Thread 4 (CPU)
-    rc = pthread_create(&threads[4], NULL, funcao_cpu, (void*)&thread_data[4]);
+    rc = pthread_create(&threads[3], NULL, funcao_cpu, (void*)&thread_data[3]);
     if (rc) {
         fprintf(stderr, "Erro ao criar thread 4: %d\n", rc);
         exit(EXIT_FAILURE);
@@ -236,7 +236,7 @@ int main(int argc, char* argv[]) {
         exit(EXIT_FAILURE);
     }
     // Cria a Thread 5 (I/O)
-    rc = pthread_create(&threads[5], NULL, funcao_io, (void*)&thread_data[5]);
+    rc = pthread_create(&threads[4], NULL, funcao_io, (void*)&thread_data[4]);
     if (rc) {
         fprintf(stderr, "Erro ao criar thread 5: %d\n", rc);
         exit(EXIT_FAILURE);
